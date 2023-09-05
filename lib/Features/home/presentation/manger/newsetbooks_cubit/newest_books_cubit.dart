@@ -7,7 +7,9 @@ part 'newest_books_state.dart';
 
 class NewestBooksCubit extends Cubit<NewestBooksState> {
   NewestBooksCubit(this.newsetBooksUseCase) : super(NewestBooksInitial());
+
  final FetchNewestBooksUseCase newsetBooksUseCase;
+ 
   Future<void> fetchNewestBooks()async{
     emit( NewestBooksLoading());
      var result = await newsetBooksUseCase.call();
