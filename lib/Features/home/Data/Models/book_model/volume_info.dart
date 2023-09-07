@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'image_links.dart';
 import 'industry_identifier.dart';
 import 'panelization_summary.dart';
@@ -51,7 +53,7 @@ class VolumeInfo {
 	factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
 				title: json['title'] as String?,
 				subtitle: json['subtitle'] as String?,
-				authors: json['authors'] as List<String>?,
+				authors: (json['authors'] as List<dynamic>?)?.map((author) => author.toString()).toList(),
 				publisher: json['publisher'] as String?,
 				publishedDate: json['publishedDate'] as String?,
 				description: json['description'] as String?,
@@ -63,7 +65,7 @@ class VolumeInfo {
 						: ReadingModes.fromJson(json['readingModes'] as Map<String, dynamic>),
 				pageCount: json['pageCount'] as int?,
 				printType: json['printType'] as String?,
-				categories: json['categories'] as List<String>?,
+				categories: (json['categories'] as List<dynamic>?)?.map((category) => category.toString()).toList(),
 				maturityRating: json['maturityRating'] as String?,
 				allowAnonLogging: json['allowAnonLogging'] as bool?,
 				contentVersion: json['contentVersion'] as String?,
